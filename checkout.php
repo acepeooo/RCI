@@ -175,15 +175,7 @@ telegram_log('💳 Vista de checkout', [
           </span>
         </button>
 
-        <button type="button" class="payment-method-row" id="pay-breb" data-reference="<?php echo htmlspecialchars($reference, ENT_QUOTES, 'UTF-8'); ?>">
-          <span class="payment-method-label">Bre-B</span>
-          <span class="payment-method-right">
-            <img class="breb-logo" src="assets/images/logobre-b-tight.png" alt="Bre-B">
-            <svg class="payment-method-chevron" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </button>
+
       </div>
     </div>
   </div>
