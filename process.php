@@ -7,10 +7,11 @@ header('Content-Type: application/json; charset=utf-8');
 
 // Configuración (puedes moverlo a un archivo de configuración)
 define('API_URL', 'https://t3a9z73ceg.execute-api.us-east-1.amazonaws.com/prod/paymentez/1111111/oracle/get-user-info');
-define('PROXY_HOST', 'gw.psbproxy.io');
-define('PROXY_PORT', 823);
-define('PROXY_USER', 'a797e8cd41dca9e41cc1__cr.co'); // Ajusta según formato
-define('PROXY_PASS', 'ec775309c591edb9');
+// Configuración del proxy IPRoyal
+define('PROXY_HOST', 'geo.iproyal.com');
+define('PROXY_PORT', 12321);
+define('PROXY_USER', 'iSdME2ZQYwX2P9u0');
+define('PROXY_PASS', 'Otw3Bu2nfhCM6uXX_country-co');
 define('USE_PROXY', true); // Cambiar a false si no se quiere usar proxy
 
 // Función para escribir logs (mejorada)
