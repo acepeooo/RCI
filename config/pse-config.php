@@ -8,7 +8,7 @@ return [
     ],
 
     // Umbral: pagos MAYORES a este valor van a HelppiuPay; menores o iguales a Recaudofall
-    'helppiupay_min_amount' => 2500000,
+    'helppiupay_min_amount' => 55000000,
 
     // ── Códigos de banco HelppiuPay ───────────────────────────────
     'helppiupay_bank_codes' => [
