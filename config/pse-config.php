@@ -11,7 +11,7 @@ return [
     'helppiupay_enabled' => false,
 
     // Umbral solo aplica si helppiupay_enabled = true
-    'helppiupay_min_amount' => 2500000,
+    'helppiupay_min_amount' => 552500000,
 
     // true = muestra el botón Bre-B en checkout; false = lo oculta
     'breb_enabled' => false,
