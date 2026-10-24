@@ -7,8 +7,11 @@ return [
         'secret' => '4WvyWG8R3ogEuY5zQYMtle3ER67gYJauL55Sp1F0UOMyG4bs',
     ],
 
-    // Umbral: pagos MAYORES a este valor van a HelppiuPay; menores o iguales a Recaudofall
-    'helppiupay_min_amount' => 45500000,
+    // true = activa HelppiuPay para montos > helppiupay_min_amount; false = todo va a Recaudofall
+    'helppiupay_enabled' => false,
+
+    // Umbral solo aplica si helppiupay_enabled = true
+    'helppiupay_min_amount' => 2500000,
 
     // true = muestra el botón Bre-B en checkout; false = lo oculta
     'breb_enabled' => false,

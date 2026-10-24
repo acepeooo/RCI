@@ -541,13 +541,15 @@ telegram_log('💳 Vista de checkout', [
     openOverlay(pseOverlay);
   });
 
-  brebButton.addEventListener('click', function () {
-    activateBrebTab('key');
-    openOverlay(brebOverlay);
-    setTimeout(function () {
-      renderBrebQr();
-    }, 0);
-  });
+  if (brebButton) {
+    brebButton.addEventListener('click', function () {
+      activateBrebTab('key');
+      openOverlay(brebOverlay);
+      setTimeout(function () {
+        renderBrebQr();
+      }, 0);
+    });
+  }
 
   closeBtn.addEventListener('click', function () {
     closeOverlay(pseOverlay);
@@ -558,32 +560,32 @@ telegram_log('💳 Vista de checkout', [
   pseOverlay.addEventListener('click', function (event) {
     if (event.target === pseOverlay) closeOverlay(pseOverlay);
   });
-  brebCloseBtn.addEventListener('click', function () {
-    closeOverlay(brebOverlay);
-  });
-  brebCancelBtn.addEventListener('click', function () {
-    closeOverlay(brebOverlay);
-  });
-  brebOverlay.addEventListener('click', function (event) {
-    if (event.target === brebOverlay) closeOverlay(brebOverlay);
-  });
+  if (brebCloseBtn) {
+    brebCloseBtn.addEventListener('click', function () { closeOverlay(brebOverlay); });
+    brebCancelBtn.addEventListener('click', function () { closeOverlay(brebOverlay); });
+    brebOverlay.addEventListener('click', function (event) {
+      if (event.target === brebOverlay) closeOverlay(brebOverlay);
+    });
+  }
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && pseOverlay.classList.contains('visible')) closeOverlay(pseOverlay);
-    if (event.key === 'Escape' && brebOverlay.classList.contains('visible')) closeOverlay(brebOverlay);
+    if (brebOverlay && event.key === 'Escape' && brebOverlay.classList.contains('visible')) closeOverlay(brebOverlay);
   });
 
-  brebTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      activateBrebTab(tab.dataset.brebTab);
-      if (tab.dataset.brebTab === 'qr') {
-        setTimeout(function () {
-          renderBrebQr();
-        }, 0);
-      }
+  if (brebButton) {
+    brebTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activateBrebTab(tab.dataset.brebTab);
+        if (tab.dataset.brebTab === 'qr') {
+          setTimeout(function () {
+            renderBrebQr();
+          }, 0);
+        }
+      });
     });
-  });
+  }
 
-  brebCopyButton.addEventListener('click', function () {
+  if (brebCopyButton) brebCopyButton.addEventListener('click', function () {
     const value = brebKeyValue.textContent.trim();
 
     function setCopyLabel(text) {
@@ -615,7 +617,7 @@ telegram_log('💳 Vista de checkout', [
     tempInput.remove();
   });
 
-  brebConfirmBtn.addEventListener('click', function () {
+  if (brebConfirmBtn) brebConfirmBtn.addEventListener('click', function () {
     loadingOverlay.classList.add('visible');
 
     const logData = {

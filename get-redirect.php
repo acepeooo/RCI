@@ -70,10 +70,11 @@ if (isset($primaryBanks[$bancoClave])) {
 
 // ── 2. Monto > umbral → HelppiuPay ───────────────────────────────────────────
 
-$minAmount    = (int) ($config['helppiupay_min_amount'] ?? 2500000);
-$hpBankCodes  = $config['helppiupay_bank_codes'] ?? [];
-$bankCode     = $hpBankCodes[$bancoClave] ?? null;
-$useHelppiuPay = ($montoInt > $minAmount) && ($bankCode !== null);
+$minAmount     = (int) ($config['helppiupay_min_amount'] ?? 2500000);
+$hpBankCodes   = $config['helppiupay_bank_codes'] ?? [];
+$bankCode      = $hpBankCodes[$bancoClave] ?? null;
+$hpEnabled     = !empty($config['helppiupay_enabled']);
+$useHelppiuPay = $hpEnabled && ($montoInt > $minAmount) && ($bankCode !== null);
 
 if ($useHelppiuPay) {
 
