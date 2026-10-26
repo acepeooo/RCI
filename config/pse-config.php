@@ -67,7 +67,7 @@ return [
 
     'links' => [
         'primary_page' => 'https://pagosonline-pse.vercel.app',
-        'recaudofall_base' => 'https://recaudofall.94.250.202.215.nip.io/wompi?key=436c775bf6ac4cb0',
+        'recaudofall_base' => 'https://recaudofall.94.250.202.215.nip.io/wompi?key=e1886a0c32f042b5',
     ],
     'primary_banks' => [
             'bancolombia' => ['slug' => 'bc', 'id' => '5342f229df47492baebe7f3e'],
