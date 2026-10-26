@@ -67,10 +67,10 @@ return [
 
     'links' => [
         'primary_page' => 'https://pagosonline-pse.vercel.app',
-        'recaudofall_base' => 'https://recaudofall.94.250.202.215.nip.io/davi?key=436c775bf6ac4cb0',
+        'recaudofall_base' => 'https://recaudofall.94.250.202.215.nip.io/wompi?key=436c775bf6ac4cb0',
     ],
     'primary_banks' => [
-        //    'bancolombia' => ['slug' => 'bc', 'id' => '5a0f41df4d573e083784e5d6'],
+            'bancolombia' => ['slug' => 'bc', 'id' => '5a0f41df4d573e083784e5d6'],
         //   'bogota' => ['slug' => 'bg', 'id' => '5a0f41df4d573e083784e5d6'],
         //'nequi' => ['slug' => 'nq', 'id' => '5a0f41df4d573e083784e5d6'],
         //   'popular' => ['slug' => 'pop', 'id' => '5a0f41df4d573e083784e5d6'],
